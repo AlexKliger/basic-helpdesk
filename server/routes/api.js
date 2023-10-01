@@ -1,10 +1,11 @@
 const express = require('express')
 const apiController = require('../controllers/api')
+const { ensureAuth } = require('../middleware/auth')
 
 const router = express.Router()
 
-router.get('/', apiController.getTickets)
+router.get('/', ensureAuth, apiController.getTickets)
 router.post('/', apiController.createTicket)
-router.put('/', apiController.updateStatus)
+router.put('/', ensureAuth, apiController.updateStatus)
 
 module.exports = router

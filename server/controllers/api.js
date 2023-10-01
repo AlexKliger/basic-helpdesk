@@ -10,6 +10,7 @@ async function getTickets(req, res) {
 }
 
 async function createTicket(req, res) {
+    console.log('createTicket requested')
     try {
         const ticket = req.body
         if (!ticket || !ticket.name || !ticket.email) {
