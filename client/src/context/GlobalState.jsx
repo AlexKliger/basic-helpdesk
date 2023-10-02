@@ -18,6 +18,14 @@ export default function GlobalProvider({ children }) {
             body: JSON.stringify(ticket)
         })
 
+        const getRes = await fetch('/api', {
+            method: 'GET',
+            headers: { 'Content-Type': 'application/json' }
+        })
+
+        const tickets = await getRes.json()
+        setTickets(tickets)
+
         return await res.json()
     }
 
