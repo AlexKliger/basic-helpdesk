@@ -30,6 +30,7 @@ async function createTicket(req, res) {
 }
 
 async function updateStatus(req, res) {
+    console.log('updateStatus requested')
     try {
         if (!req.body.id) {
             res.status(400).json({ message: 'Please complete id field.' })
@@ -48,4 +49,9 @@ async function updateStatus(req, res) {
     }
 }
 
-module.exports = { getTickets, createTicket, updateStatus }
+async function reply(req, res) {
+    console.log(req.body.text)
+    res.json({ message: 'Reply sent'})
+}
+
+module.exports = { getTickets, createTicket, updateStatus, reply }
